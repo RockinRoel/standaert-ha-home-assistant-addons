@@ -13,6 +13,7 @@ arch:
 init: false
 uart: true
 map:
+  - addon_config:r
   - share:rw
 options:
   mqtt: true
