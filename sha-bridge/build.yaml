@@ -10,5 +10,3 @@ labels:
   org.opencontainers.image.description: "Standaert Home Automation bridge add-on"
   org.opencontainers.image.source: "https://github.com/RockinRoel/standaert-ha-home-assistant-addons"
   org.opencontainers.image.licenses: "GPL-3.0-or-later"
-args:
-  TEMPIO_VERSION: "2021.09.0"

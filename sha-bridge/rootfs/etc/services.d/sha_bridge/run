@@ -4,16 +4,29 @@
 # s6-overlay docs: https://github.com/just-containers/s6-overlay
 # ==============================================================================
 
-# Add your code here
+declare serial_port debug mqtt_url mqtt_username mqtt_password
 
-# Declare variables
-declare serial_port
-
-## Get the 'message' key from the user config options.
 serial_port=$(bashio::config 'serial_port')
+if [ "${serial_port}" != "null" ]; then
+  export SHA_SERIAL_DEVICE="${serial_port}"
+fi
 
-echo "ID info: $(id)"
-echo "Serial: $(ls -la "${serial_port}")"
+debug=$(basio::config 'debug')
+if [ "${debug}" != "null" ]; then
+  export SHA_DEBUG="${debug}"
+fi
 
-## Run your program
-exec /usr/bin/sha_bridge --serial "${serial_port}" --debug
+mqtt_url=$(bashio::config 'mqtt_url')
+if [ "${mqtt_url}" != "null" ]; then
+  export SHA_MQTT_URL="${mqtt_url}"
+fi
+
+mqtt_username=$(bashio::config 'mqtt_username')
+  export SHA_MQTT_USER="${mqtt_username}"
+fi
+
+mqtt_password=$(bashio::config 'mqtt_password')
+  export SHA_MQTT_PASSWORD="${mqtt_password}"
+fi
+
+exec /usr/bin/sha_bridge

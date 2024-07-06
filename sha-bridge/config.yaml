@@ -15,7 +15,11 @@ uart: true
 map:
   - share:rw
 options:
-  serial_port:
+  debug: false
 schema:
   serial_port: device(subsystem=tty)?
+  mqtt_url: url?
+  mqtt_username: str?
+  mqtt_password: password?
+  debug: bool
 image: "ghcr.io/rockinroel/{arch}-sha-bridge-addon"
