@@ -16,4 +16,4 @@ echo "ID info: $(id)"
 echo "Serial: $(ls -la "${serial_port}")"
 
 ## Run your program
-exec /usr/bin/sha_bridge --serial "${serial_port}"
+exec /usr/bin/sha_bridge --serial "${serial_port}" --debug
