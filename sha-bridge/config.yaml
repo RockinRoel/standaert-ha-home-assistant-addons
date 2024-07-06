@@ -18,4 +18,4 @@ options:
   serial_port:
 schema:
   serial_port: device(subsystem=tty)?
-image: "ghcr.io/RockinRoel/{arch}-sha-bridge-addon"
+image: "ghcr.io/rockinroel/{arch}-sha-bridge-addon"
