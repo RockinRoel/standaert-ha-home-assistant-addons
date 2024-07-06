@@ -22,4 +22,6 @@ schema:
   mqtt_username: str?
   mqtt_password: password?
   debug: bool
+services:
+  - mqtt:want
 image: "ghcr.io/rockinroel/{arch}-sha-bridge-addon"
