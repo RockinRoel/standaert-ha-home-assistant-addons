@@ -8,3 +8,6 @@ configuration:
   debug:
     name: Debug
     description: Enables debug logging
+  program:
+    name: Program path
+    description: Determines the path to the SHAL program
