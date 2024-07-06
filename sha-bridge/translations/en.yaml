@@ -2,15 +2,9 @@ configuration:
   serial_port:
     name: Serial port
     description: The serial port that the Standaert Home Assistant controller is connected to
-  mqtt_url:
-    name: MQTT URL
-    description: The MQTT broker to connect to (e.g. mqtt://example.com:1883?client_id=123)
-  mqtt_username:
-    name: MQTT username
-    description: The MQTT username to use to connect to the broker
-  mqtt_password:
-    name: MQTT password
-    description: The MQTT password to use to connect to the broker
+  mqtt:
+    name: MQTT Enabled
+    description: Determines whether we should connect to the MQTT broker
   debug:
     name: Debug
     description: Enables debug logging

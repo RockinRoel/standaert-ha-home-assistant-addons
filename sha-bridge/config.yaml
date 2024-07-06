@@ -15,12 +15,11 @@ uart: true
 map:
   - share:rw
 options:
+  mqtt: true
   debug: false
 schema:
   serial_port: device(subsystem=tty)?
-  mqtt_url: url?
-  mqtt_username: str?
-  mqtt_password: password?
+  mqtt: bool
   debug: bool
 services:
   - mqtt:want

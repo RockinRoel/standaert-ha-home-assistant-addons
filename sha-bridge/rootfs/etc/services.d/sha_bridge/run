@@ -4,7 +4,7 @@
 # s6-overlay docs: https://github.com/just-containers/s6-overlay
 # ==============================================================================
 
-declare serial_port debug mqtt_url mqtt_username mqtt_password
+declare serial_port debug mqtt
 
 serial_port=$(bashio::config 'serial_port')
 if [ "${serial_port}" != "null" ]; then
@@ -16,19 +16,20 @@ if [ "${debug}" != "null" ]; then
   export SHA_DEBUG="${debug}"
 fi
 
-mqtt_url=$(bashio::config 'mqtt_url')
-if [ "${mqtt_url}" != "null" ]; then
-  export SHA_MQTT_URL="${mqtt_url}"
-fi
-
-mqtt_username=$(bashio::config 'mqtt_username')
-if [ "${mqtt_username}" != "null" ]; then
-  export SHA_MQTT_USER="${mqtt_username}"
-fi
-
-mqtt_password=$(bashio::config 'mqtt_password')
-if [ "${mqtt_password}" != "null" ]; then
-  export SHA_MQTT_PASSWORD="${mqtt_password}"
+mqtt=$(bashio::config 'mqtt')
+if [ "${mqtt}" == "true" ]; then
+  declare mqtt_host mqtt_ssl mqtt_port mqtt_scheme
+  mqtt_host="$(bashio::services mqtt 'host')"
+  mqtt_ssl="$(bashio::services mqtt 'ssl')"
+  if [ "${mqtt_ssl}" = "true" ]; then
+    mqtt_scheme="mqtts"
+  else
+    mqtt_scheme="mqtt"
+  fi
+  mqtt_port="$(bashio::services mqtt 'port')"
+  export SHA_MQTT_URL="${mqtt_scheme}://${mqtt_host}:${mqtt_port}?client_id=standaert_ha"
+  export SHA_MQTT_USER="$(bashio::services mqtt 'username')"
+  export SHA_MQTT_PASSWORD="$(bashio::services mqtt 'password')"
 fi
 
 echo "*** ENV ***"
