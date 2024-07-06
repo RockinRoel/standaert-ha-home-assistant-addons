@@ -4,19 +4,19 @@
 # s6-overlay docs: https://github.com/just-containers/s6-overlay
 # ==============================================================================
 
-declare serial_port debug mqtt
+declare serial_port debug mqtt program
 
-serial_port=$(bashio::config 'serial_port')
+serial_port="$(bashio::config 'serial_port')"
 if [ "${serial_port}" != "null" ]; then
   export SHA_SERIAL_DEVICE="${serial_port}"
 fi
 
-debug=$(bashio::config 'debug')
+debug="$(bashio::config 'debug')"
 if [ "${debug}" != "null" ]; then
   export SHA_DEBUG="${debug}"
 fi
 
-mqtt=$(bashio::config 'mqtt')
+mqtt="$(bashio::config 'mqtt')"
 if [ "${mqtt}" == "true" ]; then
   declare mqtt_host mqtt_ssl mqtt_port mqtt_scheme
   mqtt_host="$(bashio::services mqtt 'host')"
@@ -30,6 +30,13 @@ if [ "${mqtt}" == "true" ]; then
   export SHA_MQTT_URL="${mqtt_scheme}://${mqtt_host}:${mqtt_port}?client_id=standaert_ha"
   export SHA_MQTT_USER="$(bashio::services mqtt 'username')"
   export SHA_MQTT_PASSWORD="$(bashio::services mqtt 'password')"
+fi
+
+program="$(bashio::config 'program')"
+if [ -f "${program}" ]; then
+  export SHAL_PROGRAM="${program}"
+else
+  echo "Not loading program, ${program} does not exist"
 fi
 
 exec /usr/bin/sha_bridge

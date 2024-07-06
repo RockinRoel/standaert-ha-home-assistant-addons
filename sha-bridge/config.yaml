@@ -13,15 +13,17 @@ arch:
 init: false
 uart: true
 map:
-  - addon_config:r
+  - addon_config
   - share:rw
 options:
   mqtt: true
   debug: false
+  program: /config/program.shal
 schema:
   serial_port: device(subsystem=tty)?
   mqtt: bool
   debug: bool
+  program: str
 services:
   - mqtt:want
 image: "ghcr.io/rockinroel/{arch}-sha-bridge-addon"

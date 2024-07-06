@@ -30,6 +30,9 @@ profile example flags=(attach_disconnected,mediate_deleted) {
   # Access to options.json and other files within your addon
   /data/** rw,
 
+  # Read-only access to config
+  /config/** r,
+
   # Tokio uses these for lookups
   /etc/hosts r,
   /etc/resolv.conf r,
@@ -45,6 +48,9 @@ profile example flags=(attach_disconnected,mediate_deleted) {
 
     # Access to options.json and other files within your addon
     /data/** rw,
+
+    # Read-only access to config
+    /config/** r,
 
     # Access to mapped volumes specified in config.json
     /share/** rw,
