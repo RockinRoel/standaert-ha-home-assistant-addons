@@ -1,9 +1,9 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
 name: Standaert Home Automation bridge add-on
-version: "0.1.0"
-slug: sha_bridge
+version: "1.0.0"
+slug: sha-bridge
 description: Standaert Home Automation bridge add-on
-url: "https://github.com/RockinRoel/standaert-ha-home-assistant-addons/tree/main/sha_bridge"
+url: "https://github.com/RockinRoel/standaert-ha-home-assistant-addons/tree/main/sha-bridge"
 arch:
   - armhf
   - armv7
@@ -11,10 +11,11 @@ arch:
   - amd64
   - i386
 init: false
+uart: true
 map:
   - share:rw
 options:
   serial_port:
 schema:
   serial_port: device(subsystem=tty)?
-image: "ghcr.io/RockinRoel/{arch}-standaert-ha-bridge-addon"
+image: "ghcr.io/RockinRoel/{arch}-sha-bridge-addon"
