@@ -13,6 +13,7 @@ declare serial_port
 serial_port=$(bashio::config 'serial_port')
 
 echo "User: ${USER}"
+echo "ID info: $(id)"
 echo "Serial: $(ls -la "${serial_port}")"
 
 ## Run your program
