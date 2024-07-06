@@ -1,9 +1,9 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
-name: Example add-on
-version: "1.2.0"
-slug: example
-description: Example add-on
-url: "https://github.com/home-assistant/addons-example/tree/main/example"
+name: Standaert Home Automation bridge add-on
+version: "0.1.0"
+slug: sha_bridge
+description: Standaert Home Automation bridge add-on
+url: "https://github.com/RockinRoel/standaert-ha-home-assistant-addons/tree/main/sha_bridge"
 arch:
   - armhf
   - armv7
@@ -14,7 +14,7 @@ init: false
 map:
   - share:rw
 options:
-  message: "Hello world..."
+  # message: "Hello world..."
 schema:
-  message: "str?"
-image: "ghcr.io/home-assistant/{arch}-addon-example"
+  # message: "str?"
+image: "ghcr.io/RockinRoel/{arch}-standaert-ha-bridge-addon"
