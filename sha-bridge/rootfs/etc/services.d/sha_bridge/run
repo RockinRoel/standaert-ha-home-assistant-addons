@@ -7,13 +7,10 @@
 # Add your code here
 
 # Declare variables
-# declare message
+declare serial_port
 
 ## Get the 'message' key from the user config options.
-# message=$(bashio::config 'message')
-
-## Print the message the user supplied, defaults to "Hello World..."
-# bashio::log.info "${message:="Hello World..."}"
+serial_port=$(bashio::config 'serial_port')
 
 ## Run your program
-exec /usr/bin/sha_bridge
+exec /usr/bin/sha_bridge --serial "${serial_port}"
