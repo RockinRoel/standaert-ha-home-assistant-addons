@@ -22,10 +22,12 @@ if [ "${mqtt_url}" != "null" ]; then
 fi
 
 mqtt_username=$(bashio::config 'mqtt_username')
+if [ "${mqtt_username}" != "null" ]; then
   export SHA_MQTT_USER="${mqtt_username}"
 fi
 
 mqtt_password=$(bashio::config 'mqtt_password')
+if [ "${mqtt_password}" != "null" ]; then
   export SHA_MQTT_PASSWORD="${mqtt_password}"
 fi
 
