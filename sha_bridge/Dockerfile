@@ -6,13 +6,11 @@ WORKDIR /root
 
 RUN apk add rust cargo
 
-RUN git clone https://gitlab.com/arres/standaert-ha.git
-
 RUN \
     curl -sSLf -o standaert-ha-main-bridge.tar.bz2 \
-    "https://gitlab.com/arres/standaert-ha/-/archive/main/standaert-ha-main.tar.bz2?path=bridge"
-
-RUN tar xf standaert-ha-main-bridge.tar.bz2
+    "https://gitlab.com/arres/standaert-ha/-/archive/main/standaert-ha-main.tar.bz2?path=bridge" && \
+    tar xf standaert-ha-main-bridge.tar.bz2 && \
+    rm standaert-ha-main-bridge.tar.bz2
 
 RUN \
     cd standaert-ha-main-bridge/bridge && \
