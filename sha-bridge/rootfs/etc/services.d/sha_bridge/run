@@ -12,5 +12,8 @@ declare serial_port
 ## Get the 'message' key from the user config options.
 serial_port=$(bashio::config 'serial_port')
 
+echo "User: ${USER}"
+echo "Serial: $(ls -la "${serial_port}")"
+
 ## Run your program
 exec /usr/bin/sha_bridge --serial "${serial_port}"
