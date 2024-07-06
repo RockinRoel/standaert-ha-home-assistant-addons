@@ -11,7 +11,7 @@ if [ "${serial_port}" != "null" ]; then
   export SHA_SERIAL_DEVICE="${serial_port}"
 fi
 
-debug=$(basio::config 'debug')
+debug=$(bashio::config 'debug')
 if [ "${debug}" != "null" ]; then
   export SHA_DEBUG="${debug}"
 fi
