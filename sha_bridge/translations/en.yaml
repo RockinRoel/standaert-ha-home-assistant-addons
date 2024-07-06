@@ -1,0 +1,4 @@
+configuration:
+  serial_port:
+    name: Serial port
+    description: The serial port that the Standaert Home Assistant controller is connected to

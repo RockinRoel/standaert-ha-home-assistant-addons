@@ -14,7 +14,7 @@ init: false
 map:
   - share:rw
 options:
-  # message: "Hello world..."
+  serial_port:
 schema:
-  # message: "str?"
+  serial_port: device(subsystem=tty)?
 image: "ghcr.io/RockinRoel/{arch}-standaert-ha-bridge-addon"
