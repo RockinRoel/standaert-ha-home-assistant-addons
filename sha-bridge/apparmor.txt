@@ -30,6 +30,10 @@ profile example flags=(attach_disconnected,mediate_deleted) {
   # Access to options.json and other files within your addon
   /data/** rw,
 
+  # Tokio uses these for lookups
+  /etc/hosts r,
+  /etc/resolv.conf r,
+
   # Start new profile for service
   /usr/bin/sha_bridge cx -> sha_bridge,
 
@@ -59,5 +63,9 @@ profile example flags=(attach_disconnected,mediate_deleted) {
     /dev/ttyS* rw,
     /dev/ttyACM* rw,
     /dev/ttyUSB* rw,
+
+    # Tokio uses these for lookups
+    /etc/hosts r,
+    /etc/resolv.conf r,
   }
 }

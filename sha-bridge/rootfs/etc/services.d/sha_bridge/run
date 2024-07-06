@@ -32,8 +32,4 @@ if [ "${mqtt}" == "true" ]; then
   export SHA_MQTT_PASSWORD="$(bashio::services mqtt 'password')"
 fi
 
-echo "*** ENV ***"
-env
-echo "***********"
-
 exec /usr/bin/sha_bridge
