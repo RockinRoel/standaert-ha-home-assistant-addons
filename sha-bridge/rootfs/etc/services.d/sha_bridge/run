@@ -6,15 +6,15 @@
 
 declare program
 
-if bashio::config.has_value('serial_port'); then
+if bashio::config.has_value 'serial_port'; then
   export SHA_SERIAL_DEVICE="$(bashio::config 'serial_port')"
 fi
 
-if bashio::config.has_value('debug'); then
+if bashio::config.has_value 'debug'; then
   export SHA_DEBUG="$(bashio::config 'debug')"
 fi
 
-if bashio::config.true('mqtt'); then
+if bashio::config.true 'mqtt'; then
   local mqtt_host mqtt_ssl mqtt_port mqtt_scheme
   mqtt_host="$(bashio::services mqtt 'host')"
   mqtt_ssl="$(bashio::services mqtt 'ssl')"
@@ -32,7 +32,7 @@ fi
 program="$(bashio::config 'program')"
 if [ -f "${program}" ]; then
   export SHAL_PROGRAM="${program}"
-  if bashio::config.has_value('upload'); then
+  if bashio::config.has_value 'upload'; then
     export SHA_UPLOAD="$(bashio::config 'upload')"
   fi
 else
