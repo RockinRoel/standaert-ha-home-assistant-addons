@@ -15,7 +15,7 @@ if bashio::config.has_value 'debug'; then
 fi
 
 if bashio::config.true 'mqtt'; then
-  local mqtt_host mqtt_ssl mqtt_port mqtt_scheme
+  declare mqtt_host mqtt_ssl mqtt_port mqtt_scheme
   mqtt_host="$(bashio::services mqtt 'host')"
   mqtt_ssl="$(bashio::services mqtt 'ssl')"
   if [ "${mqtt_ssl}" = "true" ]; then
