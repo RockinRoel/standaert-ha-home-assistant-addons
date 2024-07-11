@@ -19,11 +19,13 @@ options:
   mqtt: true
   debug: false
   program: "/config/program.shal"
+  upload: false
 schema:
   serial_port: device(subsystem=tty)?
   mqtt: bool
   debug: bool
   program: str
+  upload: bool
 services:
   - mqtt:want
 image: "ghcr.io/rockinroel/{arch}-sha-bridge-addon"

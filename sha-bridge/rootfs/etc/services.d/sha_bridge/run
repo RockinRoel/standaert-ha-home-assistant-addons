@@ -4,21 +4,18 @@
 # s6-overlay docs: https://github.com/just-containers/s6-overlay
 # ==============================================================================
 
-declare serial_port debug mqtt program
+declare program
 
-serial_port="$(bashio::config 'serial_port')"
-if [ "${serial_port}" != "null" ]; then
-  export SHA_SERIAL_DEVICE="${serial_port}"
+if bashio::config.has_value('serial_port'); then
+  export SHA_SERIAL_DEVICE="$(bashio::config 'serial_port')"
 fi
 
-debug="$(bashio::config 'debug')"
-if [ "${debug}" != "null" ]; then
-  export SHA_DEBUG="${debug}"
+if bashio::config.has_value('debug'); then
+  export SHA_DEBUG="$(bashio::config 'debug')"
 fi
 
-mqtt="$(bashio::config 'mqtt')"
-if [ "${mqtt}" == "true" ]; then
-  declare mqtt_host mqtt_ssl mqtt_port mqtt_scheme
+if bashio::config.true('mqtt'); then
+  local mqtt_host mqtt_ssl mqtt_port mqtt_scheme
   mqtt_host="$(bashio::services mqtt 'host')"
   mqtt_ssl="$(bashio::services mqtt 'ssl')"
   if [ "${mqtt_ssl}" = "true" ]; then
@@ -35,6 +32,9 @@ fi
 program="$(bashio::config 'program')"
 if [ -f "${program}" ]; then
   export SHAL_PROGRAM="${program}"
+  if bashio::config.has_value('upload'); then
+    export SHA_UPLOAD="$(bashio::config 'upload')"
+  fi
 else
   echo "Not loading program, ${program} does not exist"
 fi

@@ -11,3 +11,6 @@ configuration:
   program:
     name: Program path
     description: Determines the path to the SHAL program
+  upload:
+    name: Upload program
+    description: Determines whether the program should be uploaded to the controller on the next start
