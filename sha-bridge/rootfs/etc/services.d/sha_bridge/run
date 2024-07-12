@@ -10,8 +10,10 @@ if bashio::config.has_value 'serial_port'; then
   export SHA_SERIAL_DEVICE="$(bashio::config 'serial_port')"
 fi
 
-if bashio::config.has_value 'debug'; then
-  export SHA_DEBUG="$(bashio::config 'debug')"
+if bashio::config.true 'debug'; then
+  export RUST_LOG="info,sha_bridge=trace"
+else
+  export RUST_LOG="info"
 fi
 
 if bashio::config.true 'mqtt'; then
