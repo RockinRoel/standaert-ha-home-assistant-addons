@@ -12,6 +12,12 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      addon:
+        description: 'Add-on to build'
+        required: true
+        default: 'sha-bridge'
+        type: string
 
 jobs:
   init:
@@ -34,6 +40,7 @@ jobs:
 
       - name: Get changed add-ons
         id: changed_addons
+        if: ${{ github.event_name != 'workflow_dispatch' }}
         run: |
           declare -a changed_addons
           for addon in ${{ steps.addons.outputs.addons }}; do
@@ -57,6 +64,14 @@ jobs:
           else
             echo "No add-on had any monitored files changed (${{ env.MONITORED_FILES }})";
           fi
+
+      - name: Set changed add-ons to provided add-on (for workflow dispatch)
+        id: set_changed_addons
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        run: |
+          echo "changed=true" >> $GITHUB_OUTPUT;
+          echo "addons=['${{ inputs.addon }}']" >> $GITHUB_OUTPUT;
+
   build:
     needs: init
     runs-on: ubuntu-latest
