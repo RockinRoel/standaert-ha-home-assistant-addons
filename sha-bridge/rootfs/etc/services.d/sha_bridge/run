@@ -4,8 +4,6 @@
 # s6-overlay docs: https://github.com/just-containers/s6-overlay
 # ==============================================================================
 
-echo "CHECKPOINT 1"
-
 declare program
 
 if bashio::config.has_value 'serial_port'; then
@@ -43,6 +41,6 @@ else
   echo "Not loading program, ${program} does not exist"
 fi
 
-echo "CHECKPOINT 2"
+env
 
 exec /usr/bin/sha_bridge
