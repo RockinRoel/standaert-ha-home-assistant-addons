@@ -26,6 +26,7 @@ schema:
   debug: bool
   program: str
   upload: bool
+apparmor: false
 services:
   - mqtt:want
 image: "ghcr.io/rockinroel/{arch}-sha-bridge-addon"

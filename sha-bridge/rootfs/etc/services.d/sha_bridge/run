@@ -41,6 +41,4 @@ else
   echo "Not loading program, ${program} does not exist"
 fi
 
-env
-
 exec /usr/bin/sha_bridge
