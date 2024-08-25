@@ -28,7 +28,6 @@ schema:
   program: str
   upload: bool
   advertise_nonvars: bool
-apparmor: false
 services:
   - mqtt:want
 image: "ghcr.io/rockinroel/{arch}-sha-bridge-addon"
