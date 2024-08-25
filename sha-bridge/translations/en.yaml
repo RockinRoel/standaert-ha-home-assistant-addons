@@ -14,3 +14,6 @@ configuration:
   upload:
     name: Upload program
     description: Determines whether the program should be uploaded to the controller on the next start
+  advertise_nonvars:
+    name: Advertise undeclared inputs and outputs
+    description: Whether inputs and outputs that are not declared in the SHAL program preamble should be advertised over MQTT

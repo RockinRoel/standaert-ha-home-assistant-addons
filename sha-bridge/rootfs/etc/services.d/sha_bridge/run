@@ -41,4 +41,6 @@ else
   echo "Not loading program, ${program} does not exist"
 fi
 
+export SHA_ADVERTISE_NONVARS="$(bashio::config 'advertise_nonvars')"
+
 exec /usr/bin/sha_bridge

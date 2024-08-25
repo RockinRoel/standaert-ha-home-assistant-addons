@@ -1,6 +1,6 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
 name: Standaert Home Automation bridge add-on
-version: "0.1.1"
+version: "0.2.0"
 slug: sha-bridge
 description: Standaert Home Automation bridge add-on
 url: "https://github.com/RockinRoel/standaert-ha-home-assistant-addons/tree/main/sha-bridge"
@@ -16,16 +16,18 @@ map:
   - addon_config
   - share:rw
 options:
-  mqtt: true
+  mqtt: false
   debug: false
   program: "/config/program.shal"
   upload: false
+  advertise_nonvars: true
 schema:
   serial_port: device(subsystem=tty)?
   mqtt: bool
   debug: bool
   program: str
   upload: bool
+  advertise_nonvars: bool
 apparmor: false
 services:
   - mqtt:want
