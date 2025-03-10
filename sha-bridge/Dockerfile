@@ -9,18 +9,18 @@ WORKDIR /root
 RUN apk add rust cargo
 
 RUN \
-    curl -sSLf -o standaert-ha-${BUILD_VERSION}-bridge.tar.bz2 \
-    "https://gitlab.com/arres/standaert-ha/-/archive/${BUILD_VERSION}/standaert-ha-${BUILD_VERSION}.tar.bz2?path=bridge" && \
-    tar xf standaert-ha-${BUILD_VERSION}-bridge.tar.bz2 && \
-    rm standaert-ha-${BUILD_VERSION}-bridge.tar.bz2
+    curl -sSLf -o standaert-ha-${BUILD_VERSION}.tar.gz \
+    "https://gitea.com/arres/standaert-ha/archive/${BUILD_VERSION}.tar.gz" && \
+    tar xf standaert-ha-${BUILD_VERSION}.tar.gz && \
+    rm standaert-ha-${BUILD_VERSION}.tar.gz
 
 RUN \
-    cd standaert-ha-${BUILD_VERSION}-bridge/bridge && \
+    cd standaert-ha/bridge && \
     cargo build --release
 
 FROM build
 
-COPY --from=build /root/standaert-ha-${BUILD_VERSION}-bridge/bridge/target/release/sha_bridge /usr/bin/sha_bridge
+COPY --from=build /root/standaert-ha/bridge/target/release/sha_bridge /usr/bin/sha_bridge
 
 # Copy root filesystem
 COPY rootfs /
